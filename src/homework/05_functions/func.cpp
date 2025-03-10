@@ -18,7 +18,7 @@ float get_gc_content(const string& dna){
 string get_reverse_string(string dna){
     string reversed_dna;
 
-    for (int letter = dna.length(); letter > -1; letter--){
+    for (int letter = dna.length() -1; letter > -1; letter--){
         reversed_dna = reversed_dna + dna[letter];
     }
 
