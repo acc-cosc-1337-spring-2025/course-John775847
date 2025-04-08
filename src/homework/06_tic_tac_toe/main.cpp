@@ -40,10 +40,7 @@ int main() {
 				return 3;
 			}
 			game.display_board();
-			char continue_the_game;
-			cout<<"\nContinue? (Y or N)\n";
-			cin>>continue_the_game;
-			if (continue_the_game == 'n'){
+			if (game.game_over()){
 				break;
 			}
 		}
@@ -52,7 +49,7 @@ int main() {
 		char another_game;
 		cout<<"\nAnother game? (Y or N)\n";
 		cin>>another_game;
-		if (another_game == 'n'){
+		if (another_game == 'n' || another_game == 'N'){
 			break;
 		}
 		cout<<"\n";
