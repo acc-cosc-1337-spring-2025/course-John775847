@@ -23,9 +23,14 @@ void TicTacToe::start_game(string first_player){
     clear_board();
 }
 
-void TicTacToe::mark_board(int position){
-    pegs[position-1] = player;
-    set_next_player();
+bool TicTacToe::mark_board(int position){
+    if(pegs[position-1] == " "){
+        pegs[position-1] = player;
+        set_next_player();
+        return true;
+    }else{
+        return false;
+    }
 }
 
 void TicTacToe::display_board() const{
@@ -36,10 +41,6 @@ void TicTacToe::display_board() const{
     cout<<"---------\n";
     cout<<pegs[6]<<" | "<<pegs[7]<<" | "<<pegs[8]<<"\n";
 }
-
-// xox
-// oxo
-// oxo
 
 string TicTacToe::get_winner(){
     return winner;

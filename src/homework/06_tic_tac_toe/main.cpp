@@ -1,4 +1,5 @@
 #include "tic_tac_toe.h"
+#include "tic_tac_toe_manager.h"
 #include<iostream>
 #include<string>
 
@@ -8,6 +9,7 @@ using std::cout;
 
 int main() {
 	TicTacToe game;
+	TicTacToeManager manager;
 
 	while(true){
 		char question_X_or_O;
@@ -24,16 +26,22 @@ int main() {
 		}
 
 		game.display_board();
-		while(!(game.game_over())){
+		while(true){
 			int position;
 			cout<<"\nEnter a position to mark on the board (1 through 9)\n";
 			cin>>position;
 			if (position >= 1 && position <= 9){
-				if (game.pegs[position-1] == " "){
-					game.mark_board(position);
-				}else{
-					cout<<"\nERROR: position already taken.\n";
-					return 2;
+				while(true){
+					if (game.mark_board(position)){ //The way this works is really funny to me.
+						break;
+					}else{
+						cout<<"\nPosition already taken, try again (1 through 9)\n";
+						cin>>position;
+						if (!(position >= 1 && position <= 9)){
+							cout<<"\nERROR: wrong number. Muse be 1 through 9\n";
+							return 3;
+						}
+					}
 				}
 			}else{
 				cout<<"\nERROR: wrong number. Muse be 1 through 9\n";
@@ -45,6 +53,10 @@ int main() {
 			}
 		}
 		game.display_board();
+		int x_win, o_win, ties;
+		manager.save_finished_game(game);
+		manager.get_winner_total(x_win, o_win, ties);
+		cout<<"\nX wins: "<<x_win<<"\nO wins: "<<o_win<<"\nties: "<<ties<<"\n";
 
 		char another_game;
 		cout<<"\nAnother game? (Y or N)\n";
