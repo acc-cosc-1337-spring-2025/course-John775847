@@ -14,14 +14,14 @@ class TicTacToe{
         virtual bool check_row_win() = 0;
         virtual bool check_diagonal_win() = 0;
     public:
-        TicTacToe(size_t size) : board{size*size, " "} {
-        }
+        TicTacToe(size_t size) : board{size*size, " "} {};
         bool game_over();
         void start_game(string first_player);
         bool mark_board(int position);
         string get_player() const{return player;}
         virtual void display_board() const = 0;
         string get_winner();
+        int get_board_size() const{return board.size();}
     private:
         void set_winner();
         void set_next_player();
