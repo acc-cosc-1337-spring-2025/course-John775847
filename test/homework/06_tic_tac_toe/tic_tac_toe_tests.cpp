@@ -130,7 +130,7 @@ TEST_CASE("Test win by first column 4x4"){
 	game->mark_board(9);
 	std::cout<<"\n"<<game->get_board_size();
 	game->display_board();
-	REQUIRE(game->game_over() == false); //I don't know why this works in main but not the test case. It might have to do with the weird bug in main.
+	REQUIRE(game->game_over() == false);
 	game->mark_board(4);
 	REQUIRE(game->game_over() == false);
 

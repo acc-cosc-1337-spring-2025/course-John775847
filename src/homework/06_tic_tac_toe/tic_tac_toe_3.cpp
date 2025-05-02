@@ -11,8 +11,9 @@ bool TicTacToe3::check_column_win(){
         return true;
     }else if(board[2] == board[5] && board[2] == board[8] && board[2] != " "){
         return true;
+    }else{
+        return false;
     }
-    return false;
 }
 
 bool TicTacToe3::check_row_win(){
@@ -22,8 +23,9 @@ bool TicTacToe3::check_row_win(){
         return true;
     }else if(board[6] == board[7] && board[6] == board[8] && board[6] != " "){
         return true;
+    }else{
+        return false;
     }
-    return false;
 }
 
 bool TicTacToe3::check_diagonal_win(){
@@ -31,8 +33,9 @@ bool TicTacToe3::check_diagonal_win(){
         return true;
     }else if(board[2] == board[4] && board[2] == board[6] && board[2] != " "){
         return true;
+    }else{
+        return false;
     }
-    return false;
 }
 
 void TicTacToe3::display_board() const{
